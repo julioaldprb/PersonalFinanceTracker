@@ -1,8 +1,28 @@
 .header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+@media (max-width: 480px) {
+  .toggle-mode {
+    align-self: flex-end;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-modal,
+  .form,
+  .history,
+  .summary {
+    width: 100%;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+  }
 }
 
 body {
@@ -20,7 +40,7 @@ body.dark-mode {
 .App {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 16px;
   background: transparent;
 }
 
@@ -246,8 +266,19 @@ body.dark-mode .edit-modal button:hover {
 
 /* Ensure filter sits neatly above table */
 .history table {
-  margin-top: 16px;
+  width: 100%;
+  min-width: 600px;
 }
+
+@media (max-width: 768px) {
+  .history {
+    overflow-x: auto;
+  }
+  .history table {
+    display: inline-table;
+  }
+}
+
 
 .form input,
 .form select {
@@ -452,6 +483,27 @@ body.dark-mode .edit-modal button:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .summary {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 16px;
+  }
+  .form label {
+    font-size: 0.9rem;
+  }
+  .form input,
+  .form select,
+  .form button {
+    font-size: 0.95rem;
+  }
 }
 
 .history, .form, .summary, .edit-modal {
